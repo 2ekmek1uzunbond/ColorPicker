@@ -1,0 +1,98 @@
+*{
+    margin: auto;
+}
+
+button{
+    background-color: rgba(0, 0, 0, 0);
+    border-style: none;
+}
+
+a{
+    font-family: 'Concert One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 45px;
+    line-height: 100%;
+    color: #404040;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+#background{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: conic-gradient(from 180deg at 50% 50%, #C5FFAA -39.37deg, #45D2FF 48.75deg, #CF45FF 135deg, #FFD392 226.87deg, #C5FFAA 320.63deg, #45D2FF 408.75deg);
+}
+
+#hierarchy{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 54px;
+
+    position: absolute;
+    width: 445px;
+    height: 700px;
+    left: calc(50% - 445px/2);
+    top: calc(50% - 698px/2 + 0px);
+}
+
+#box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 14px;
+
+    width: 445px;
+    height: 514px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 10px 50px rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#change{
+    width: 320px;
+    height: 130px;
+    text-align: center;
+    color: #404040;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Concert One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 100%;
+
+}
+
+#color{
+    width: 445px;
+    height: 300px;
+    background: #015D52;
+    border-radius: 10px 10px 0px 0px;
+
+    /* Inside auto layout */
+
+}
+
+#colorname{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    width: 400px;
+    height: 200px;
+    flex: none;
+}
