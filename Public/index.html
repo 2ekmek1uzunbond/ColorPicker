@@ -2,15 +2,18 @@
 <html>
 <head>
     <link rel="stylesheet" href="style.css">
+    <script src="randomColor.js"></script>
 </head>
 <body>
+
     <div id="background">
         <main id="hierarchy">
             <div id="box">
                 <div id="color"></div>
                 <div id="colorname">
-                    <a>#015D52</a>
+                    <a>#<script id="hex">document.write(Math.random().toString(16).slice(2, 8));</script>; </a>
                     <a>#RGB:001-093-082)</a>
+
                 </div>
             </div>
             <button id="change">PRESS THE SPACEBAR</button>
@@ -18,3 +21,15 @@
     </div>
 </body>
 </html>
+
+
+<script>
+    let h = [45, 55];
+    let s = [80, 100];
+    let l = [55, 95];
+    let a = [1, 1];
+
+    let color = getRandomColor().value;
+    document.body.style.background = color;
+
+</script>
