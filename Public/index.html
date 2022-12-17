@@ -5,15 +5,13 @@
     <script src="randomColor.js"></script>
 </head>
 <body>
-
     <div id="background">
         <main id="hierarchy">
             <div id="box">
                 <div id="color"></div>
                 <div id="colorname">
-                    <a>#<script id="hex">document.write(Math.random().toString(16).slice(2, 8));</script>; </a>
-                    <a>#RGB:001-093-082)</a>
-
+                    <a id="hex" href="javascript:CopyHexCode()"></a>
+                    <a id="rgb" href="javascript:CopyRGBCode()"></a>
                 </div>
             </div>
             <button id="change">PRESS THE SPACEBAR</button>
@@ -31,5 +29,65 @@
 
     let color = getRandomColor().value;
     document.body.style.background = color;
+
+    // HEX kodunu RGB koduna çeviren fonksiyon
+
+    function hexToRgb(hex) {
+        var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+        hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+            return r + r + g + g + b + b;
+        });
+
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+
+    // Renklerin olduğu dizi ve o diziden random bi renk seçen kod
+
+    const colors = ["#FF0000", "#00FF00", "#0000FF", "#FF5733", "#33FF83", "#3C33FF", "#FF33F9"];
+
+    function GetRandomColorInArray(){
+        let arrayLength = colors.length - 1;
+        let randomColorIndex = Math.floor(Math.random() * arrayLength);
+        let randomColorHex = colors[randomColorIndex];
+        let randomColorResultRGB = hexToRgb(randomColorHex);
+        let randomColorRGB = randomColorResultRGB.r + ", " + randomColorResultRGB.g + ", " + randomColorResultRGB.b;
+        let rgbText = "rgb(" + randomColorRGB + ")";
+
+        document.getElementById("color").style.backgroundColor = randomColorHex;
+        document.getElementById("hex").innerHTML = randomColorHex;
+        document.getElementById("rgb").innerHTML = rgbText;
+    }
+
+    GetRandomColorInArray();
+
+    // Space'e basıldığında random renk seçme kodunu çalıştıran fonksiyon
+
+    document.body.onkeyup = function(e){
+        if(e.key == ' '){
+            console.log("space'e basıldı");
+            GetRandomColorInArray();
+        }
+    }
+
+    // Kodlara tıklayınca panoya kopyalanmasını sağlayan fonksiyonlar
+
+    function CopyHexCode(){
+        var copyHex = document.getElementById("hex").innerText;
+        navigator.clipboard.writeText(copyHex).then(
+            v => alert("HEX Code Copied!"),
+            e => alert("Failed to Copy HEX Code..."));
+    }
+
+    function CopyRGBCode(){
+        var copyRgb = document.getElementById("rgb").innerText;
+        navigator.clipboard.writeText(copyRgb).then(
+            v => alert("RGB Code Copied!"),
+            e => alert("Failed to Copy RGB Code..."));
+    }
 
 </script>
